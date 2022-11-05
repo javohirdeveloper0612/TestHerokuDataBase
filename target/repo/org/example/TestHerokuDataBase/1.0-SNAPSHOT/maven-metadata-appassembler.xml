@@ -2,18 +2,18 @@
 <metadata modelVersion="1.1.0">
   <groupId>org.example</groupId>
   <artifactId>TestHerokuDataBase</artifactId>
+  <version>1.0-SNAPSHOT</version>
   <versioning>
-    <lastUpdated>20221104172106</lastUpdated>
     <snapshot>
       <localCopy>true</localCopy>
     </snapshot>
+    <lastUpdated>20221105174408</lastUpdated>
     <snapshotVersions>
       <snapshotVersion>
         <extension>jar</extension>
         <value>1.0-SNAPSHOT</value>
-        <updated>20221104172106</updated>
+        <updated>20221105174408</updated>
       </snapshotVersion>
     </snapshotVersions>
   </versioning>
-  <version>1.0-SNAPSHOT</version>
 </metadata>

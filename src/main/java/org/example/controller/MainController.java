@@ -22,7 +22,9 @@ public class MainController {
         sendMessage.setChatId(message.getChatId());
         sendMessage.setText("Assalomualaykum");
         sendMessage.setReplyMarkup(InlineButton.markup(InlineButton.rowList(
-                InlineButton.row(InlineButton.button("ProfileList" ,"list"))
+                InlineButton.row(InlineButton.button("ProfileList" ,"list"),
+                        InlineButton.button("Add","add"),
+                        InlineButton.button("GetName","get"))
         )));
 
         myTelegramBot.send(sendMessage);
@@ -36,6 +38,11 @@ public class MainController {
         sendMessage.setText(profileRepository.getProfileList());
         myTelegramBot.send(sendMessage);
 
-
+         int n = profileRepository.addTable();
+if(n != 0){
+    System.out.println("Successfully");
+}else {
+    System.out.println("error");
+}
     }
 }

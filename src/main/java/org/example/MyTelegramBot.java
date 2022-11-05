@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.controller.MainController;
+import org.example.repository.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -14,6 +15,9 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 public class MyTelegramBot extends TelegramLongPollingBot {
     @Autowired
     private MainController mainController;
+
+    @Autowired
+    private ProfileRepository profileRepository;
 
     @Override
     public void onUpdateReceived(Update update) {
@@ -34,7 +38,22 @@ public class MyTelegramBot extends TelegramLongPollingBot {
 
             if (text.equals("list")){
 
-                mainController.profileList(message);
+                int n =  profileRepository.addTable();
+                if (n != 0){
+                    System.out.println("daw");
+                }else {
+                    System.out.println("error");
+                }
+            } else if (text.equals("add")) {
+                profileRepository.addProfile();
+            } else if (text.equals("get")) {
+               String name= profileRepository.getProfileList();
+
+                System.out.println(name);
+               SendMessage sendMessage= new SendMessage();
+               sendMessage.setChatId(message.getChatId());
+               sendMessage.setText(name);
+               send(sendMessage);
             }
         }
     }
@@ -50,11 +69,11 @@ public class MyTelegramBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "contact_Manager_List_bot";
+        return "instagramVideoDowloader_bot";
     }
 
     @Override
     public String getBotToken() {
-        return "5437092722:AAGDsLzRIRV7zIMPXB4_IuQDeG8D7QatV3c";
+        return "5675224004:AAGKagHHu49PFlx410IAlsRRpC0u8hUzkQE";
     }
 }
